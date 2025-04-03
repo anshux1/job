@@ -1,6 +1,7 @@
 import { dummyData } from "@/utils/data"
 
 import { cn } from "@/lib/utils"
+import { Footer } from "@/components/Footer"
 import { HomeHeroSection } from "@/components/home/HomeHeroSection"
 import { HomeNav } from "@/components/home/HomeNav"
 
@@ -33,6 +34,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

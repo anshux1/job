@@ -80,6 +80,73 @@ export const navLinks = {
   ],
 }
 
+export const footerLinks = {
+  quickLinks: [
+    {
+      label: "About",
+      href: "/about",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
+    {
+      label: "Pricing",
+      href: "/pricing",
+    },
+  ],
+  candidates: [
+    {
+      label: "Browse Jobs",
+      href: "/find-jobs",
+    },
+    {
+      label: "Browse Employers",
+      href: "/employers",
+    },
+    {
+      label: "Candidate Dashboard",
+      href: "/dashboard",
+    },
+    {
+      label: "Saved Jobs",
+      href: "/saved-jobs",
+    },
+  ],
+  employers: [
+    {
+      label: "Post a Job",
+      href: "/post-job",
+    },
+    {
+      label: "Browse Candidates",
+      href: "/candidates",
+    },
+    {
+      label: "Employers Dashboard",
+      href: "/dashboard",
+    },
+    {
+      label: "Applications",
+      href: "/applications",
+    },
+  ],
+  support: [
+    {
+      label: "Faqs",
+      href: "/faqs",
+    },
+    {
+      label: "Privacy Policy",
+      href: "/privacy-policy",
+    },
+    {
+      label: "Terms & Conditions",
+      href: "/terms-and-conditions",
+    },
+  ],
+}
+
 export const cities = [
   "Mumbai",
   "Delhi",
