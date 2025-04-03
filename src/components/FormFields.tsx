@@ -22,6 +22,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   Select,
   SelectContent,
@@ -186,6 +187,7 @@ export function SelectField<F extends FieldValues>(props: {
   placeholder?: string
   required?: boolean
   disabled?: boolean
+  className?: string
 }) {
   return (
     <FormField
@@ -202,16 +204,18 @@ export function SelectField<F extends FieldValues>(props: {
               defaultValue={field.value}
               disabled={props.disabled}
             >
-              <SelectTrigger className="my-0 max-w-lg min-w-[160px]">
+              <SelectTrigger className={cn("my-0 max-w-lg", props.className)}>
                 <SelectValue placeholder={props.placeholder} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  {props.options.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
+                  <ScrollArea className="h-80">
+                    {props.options.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </ScrollArea>
                 </SelectGroup>
               </SelectContent>
             </Select>
