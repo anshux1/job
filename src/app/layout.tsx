@@ -3,6 +3,8 @@ import { Inter } from "next/font/google"
 
 import "@/styles/globals.css"
 
+import { Footer } from "@/components/Footer"
+import { HomeNav } from "@/components/home/HomeNav"
 import RootProvider from "@/components/RootProvider"
 
 const inter = Inter({
@@ -26,7 +28,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} h-screen w-screen overflow-x-hidden antialiased`}
       >
-        <RootProvider>{children}</RootProvider>
+        <RootProvider>
+          <HomeNav />
+          {children}
+          <Footer />
+        </RootProvider>
       </body>
     </html>
   )

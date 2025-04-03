@@ -52,7 +52,7 @@ export const AnimatedTabLinks = ({
               setPosition={setPosition}
             >
               <p
-                className={`${pathname.includes(tab.href) ? "text-primary font-medium" : "text-muted-foreground"} group-hover:text-black/80`}
+                className={`${pathname === tab.href ? "text-primary font-medium" : "text-muted-foreground"} group-hover:text-black/80`}
               >
                 {tab.label}
               </p>

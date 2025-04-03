@@ -11,8 +11,8 @@ export const Footer = () => {
             <BriefcaseBusiness className="text-primary" size={30} />
             <p className="text-2xl font-semibold">Jobpilot</p>
           </div>
-          <p className="text-primary/80 mt-2 text-sm">
-            Call Now: <span className="text-primary">+(000) 000-0000</span>
+          <p className="text-muted-foreground mt-2 text-sm">
+            Call Now: <span>+(000) 000-0000</span>
           </p>
         </div>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-16">
@@ -24,10 +24,10 @@ export const Footer = () => {
       </div>
       <div className="border-grid border-t">
         <div className="container-wrapper flex items-center justify-between py-5">
-          <p className="text-primary/80 text-xs">
+          <p className="text-muted-foreground text-xs">
             @ 2024 Jobpilot - Job Portal
           </p>
-          <Github className="text-primary/80 size-5" />
+          <Github className="text-muted-foreground size-5" />
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@ const FooterLink = ({
     <div>
       <h3 className="mb-1.5 text-lg font-medium">{title}</h3>
       {links.map((item, index) => (
-        <div key={index} className="text-primary/80 mb-1 text-sm">
+        <div key={index} className="text-muted-foreground mb-1 text-sm">
           {item.label}
         </div>
       ))}

@@ -12,7 +12,7 @@ import { HomeSearchBar } from "./HomeSearchBar"
 export const HomeNav = () => {
   return (
     <div className="border-grid border-b">
-      <div className="border-grid border-b">
+      <div className="border-grid bg-secondary border-b">
         <ScrollArea className="container-wrapper">
           <AnimatedTabLinks className="pt-1" links={navLinks.home} />
           <ScrollBar orientation="horizontal" className="hidden" />

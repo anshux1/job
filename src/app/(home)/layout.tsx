@@ -1,14 +1,18 @@
+"use client"
+
 import React from "react"
 
-import { Footer } from "@/components/Footer"
-import { HomeNav } from "@/components/home/HomeNav"
+import { HomeBreadcrum } from "@/components/home/HomeBreadcrum"
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <HomeNav />
+      <div className="bg-secondary/70 border-grid flex border-b">
+        <div className="container-wrapper flex items-center justify-between gap-2 py-4">
+          <HomeBreadcrum />
+        </div>
+      </div>
       {children}
-      <Footer />
     </>
   )
 }
