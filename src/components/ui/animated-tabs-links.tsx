@@ -33,7 +33,6 @@ export const AnimatedTabLinks = ({
     width: 0,
     opacity: 0,
   })
-
   return (
     <ul
       onMouseLeave={() => {
@@ -44,20 +43,23 @@ export const AnimatedTabLinks = ({
       }}
       className={cn("relative flex w-fit sm:gap-2", className)}
     >
-      {links.map((tab) => (
-        <Link href={tab.href} key={tab.label}>
-          <LinkItem
-            className={`${pathname.includes(tab.href) && "border-primary border-b-2 pb-2"} group`}
-            setPosition={setPosition}
-          >
-            <p
-              className={`${pathname.includes(tab.href) ? "text-primary font-medium" : "text-muted-foreground"} group-hover:text-black/80`}
+      {links.map((tab) => {
+        console.log(pathname, tab.href)
+        return (
+          <Link href={tab.href} key={tab.label}>
+            <LinkItem
+              className={`${pathname === tab.href ? "border-primary border-b-2 pb-2" : ""} group`}
+              setPosition={setPosition}
             >
-              {tab.label}
-            </p>
-          </LinkItem>
-        </Link>
-      ))}
+              <p
+                className={`${pathname.includes(tab.href) ? "text-primary font-medium" : "text-muted-foreground"} group-hover:text-black/80`}
+              >
+                {tab.label}
+              </p>
+            </LinkItem>
+          </Link>
+        )
+      })}
       <Cursor position={position} />
     </ul>
   )

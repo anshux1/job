@@ -1,16 +1,13 @@
 import { dummyData } from "@/utils/data"
 
 import { cn } from "@/lib/utils"
-import { Footer } from "@/components/Footer"
 import { HomeHeroSection } from "@/components/home/HomeHeroSection"
-import { HomeNav } from "@/components/home/HomeNav"
 
 export default function Home() {
   return (
-    <div className="border-grid">
-      <HomeNav />
+    <>
       <HomeHeroSection />
-      <div className="border-grid border-y">
+      <div className="border-grid border-t">
         <div className="container-wrapper space-y-4 py-6">
           <h2 className="text-3xl font-medium sm:text-4xl lg:text-3xl">
             Most Popular Vacancies
@@ -34,7 +31,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </>
   )
 }

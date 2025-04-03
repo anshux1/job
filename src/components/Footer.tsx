@@ -4,7 +4,7 @@ import { BriefcaseBusiness, Github } from "lucide-react"
 
 export const Footer = () => {
   return (
-    <div>
+    <div className="border-grid border-t">
       <div className="container-wrapper justify-between gap-5 space-y-5 px-3 py-10 sm:flex sm:space-y-0">
         <div>
           <div className="flex items-center gap-2">
