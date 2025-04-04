@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { toast } from "sonner"
 
-import { authClient } from "@/lib/auth.config"
+import { authClient } from "@/lib/auth/auth.config"
 import { Button } from "@/components/ui/button"
 
 export interface Auth0FormProps {
@@ -57,6 +57,7 @@ export const Auth0Form = ({ type }: Auth0FormProps) => {
         >
           <Image
             src="/social/twitter.svg"
+            className="dark:invert"
             alt="Google logo"
             width={20}
             height={20}

@@ -7,6 +7,7 @@ import { AnimatedTabLinks } from "@/components/ui/animated-tabs-links"
 import { Button } from "@/components/ui/button"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
+import { ModeSwitcher } from "../ModeSwitcher"
 import { CityChangeForm } from "./HomeCityChangeForm"
 import { HomeSearchBar } from "./HomeSearchBar"
 
@@ -15,7 +16,10 @@ export const HomeNav = () => {
     <div className="border-grid border-b">
       <div className="border-grid bg-secondary border-b">
         <ScrollArea className="container-wrapper">
-          <AnimatedTabLinks className="pt-1" links={navLinks.home} />
+          <div className="flex items-center justify-between gap-2">
+            <AnimatedTabLinks className="pt-1" links={navLinks.home} />
+            <ModeSwitcher />
+          </div>
           <ScrollBar orientation="horizontal" className="hidden" />
         </ScrollArea>
       </div>

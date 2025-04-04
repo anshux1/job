@@ -4,6 +4,8 @@ import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { Toaster } from "sonner"
 
+import { EdgeStoreProvider } from "@/lib/services/edgestore"
+
 export default function RootProvider({
   children,
 }: {
@@ -18,7 +20,7 @@ export default function RootProvider({
         enableSystem
         disableTransitionOnChange
       >
-        {children}
+        <EdgeStoreProvider>{children}</EdgeStoreProvider>
         <Toaster richColors position="top-center" />
       </ThemeProvider>
     </>

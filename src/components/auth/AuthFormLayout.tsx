@@ -20,7 +20,7 @@ export const AuthFormLayout = ({
   cardDescription,
 }: AuthFormLayoutProps) => {
   return (
-    <Card>
+    <Card className="bg-card/25">
       <CardHeader>
         <CardTitle className="text-2xl">{title}</CardTitle>
         <CardDescription className="text-sm">
