@@ -2,7 +2,13 @@ import { CreateEmailResponseSuccess } from "resend"
 import z from "zod"
 
 import { ActionState } from "@/lib/create-action"
-import { AccessTokenSchema, signinSchema, signupSchema } from "./schema"
+import {
+  AccessTokenSchema,
+  forgotPasswordSchema,
+  resetPasswordSchema,
+  signinSchema,
+  signupSchema,
+} from "./schema"
 
 export type InputTypeSignIn = z.infer<typeof signinSchema>
 export type InputTypeSignUp = z.infer<typeof signupSchema>
@@ -12,3 +18,11 @@ export type ReturnTypeAccessToken = ActionState<
   InputTypeAccessToken,
   CreateEmailResponseSuccess | null
 >
+
+export type InputTypeForgotPassword = z.infer<typeof forgotPasswordSchema>
+export type ReturnTypeForgotPassword = ActionState<
+  InputTypeForgotPassword,
+  string
+>
+
+export type InputTypeResetPassword = z.infer<typeof resetPasswordSchema>

@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import { navLinks } from "@/utils/constants"
+import { navLinks } from "@/constants/navLinks"
 import { HomeIcon } from "lucide-react"
 
 import {

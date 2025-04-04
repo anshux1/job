@@ -1,5 +1,5 @@
 import React from "react"
-import { dummyJobs } from "@/utils/constants"
+import { dummyJobs } from "@/constants/dummyData"
 import { MapPin, Search, SlidersHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"

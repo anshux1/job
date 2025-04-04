@@ -1,4 +1,4 @@
-import { dummyData } from "@/utils/data"
+import { dummyData } from "@/constants/dummyData"
 
 import { cn } from "@/lib/utils"
 import { HomeHeroSection } from "@/components/home/HomeHeroSection"

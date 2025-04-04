@@ -12,7 +12,7 @@ import { InputField, PasswordField } from "@/components/FormFields"
 import { signupSchema } from "@/actions/auth/schema"
 import { InputTypeSignUp } from "@/actions/auth/types"
 
-export const SignupForm = () => {
+export const AuthSignUpForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const form = useForm<InputTypeSignUp>({
     resolver: zodResolver(signupSchema),
@@ -48,7 +48,7 @@ export const SignupForm = () => {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-3 space-y-3">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
         <InputField
           className="bg-transparent dark:bg-transparent"
           control={form.control}

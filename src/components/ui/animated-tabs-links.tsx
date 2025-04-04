@@ -43,23 +43,20 @@ export const AnimatedTabLinks = ({
       }}
       className={cn("relative flex w-fit sm:gap-2", className)}
     >
-      {links.map((tab) => {
-        console.log(pathname, tab.href)
-        return (
-          <Link href={tab.href} key={tab.label}>
-            <LinkItem
-              className={`${pathname === tab.href ? "border-primary border-b-2 pb-2" : ""} group`}
-              setPosition={setPosition}
+      {links.map((tab) => (
+        <Link href={tab.href} key={tab.label}>
+          <LinkItem
+            className={`${pathname === tab.href ? "border-primary border-b-2 pb-2" : ""} group`}
+            setPosition={setPosition}
+          >
+            <p
+              className={`${pathname === tab.href ? "text-primary font-medium" : "text-muted-foreground"} group-hover:text-black/80`}
             >
-              <p
-                className={`${pathname === tab.href ? "text-primary font-medium" : "text-muted-foreground"} group-hover:text-black/80`}
-              >
-                {tab.label}
-              </p>
-            </LinkItem>
-          </Link>
-        )
-      })}
+              {tab.label}
+            </p>
+          </LinkItem>
+        </Link>
+      ))}
       <Cursor position={position} />
     </ul>
   )

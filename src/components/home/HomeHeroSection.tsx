@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import { dummyData } from "@/utils/data"
+import { dummyData } from "@/constants/dummyData"
 import { LucideIcon, MapPin, Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"

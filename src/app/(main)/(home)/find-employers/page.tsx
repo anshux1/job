@@ -1,5 +1,5 @@
 import React from "react"
-import { dummyEmployer } from "@/utils/constants"
+import { dummyEmployer } from "@/constants/dummyData"
 
 import { EmployerCard } from "@/components/employers/EmployerCard"
 import { PaginationComp } from "@/components/job/JobPaginatiion"

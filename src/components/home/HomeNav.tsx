@@ -1,5 +1,6 @@
 import React from "react"
-import { navLinks } from "@/utils/constants"
+import Link from "next/link"
+import { navLinks } from "@/constants/navLinks"
 import { BriefcaseBusiness } from "lucide-react"
 
 import { AnimatedTabLinks } from "@/components/ui/animated-tabs-links"
@@ -31,9 +32,12 @@ export const HomeNav = () => {
           </div>
         </div>
         <div className="flex gap-2">
-          <Button className="h-9 md:h-10" variant="outline">
-            Sign In
-          </Button>
+          <Link href="/auth/signin">
+            <Button className="h-9 md:h-10" variant="outline">
+              Sign In
+            </Button>
+          </Link>
+
           <Button className="h-9 md:h-10">Post A Job</Button>
         </div>
       </div>

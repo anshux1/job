@@ -232,7 +232,6 @@ export function PasswordField<F extends FieldValues>(props: {
   name: Path<F>
   label: React.ReactNode
   placeholder?: string
-  required?: boolean
   type?: string
   disabled?: boolean
   showForgotPassword?: boolean
@@ -249,7 +248,6 @@ export function PasswordField<F extends FieldValues>(props: {
           label={props.label}
           placeholder={props.placeholder}
           type={isVisible ? "text" : "password"}
-          required
         />
         <button
           className="text-muted-foreground/80 hover:text-foreground focus-visible:outline-ring/70 absolute inset-y-3 end-0 flex h-full w-9 items-center justify-center rounded-e-lg outline-offset-2 transition-colors focus:z-10 focus-visible:outline focus-visible:outline-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
@@ -267,8 +265,8 @@ export function PasswordField<F extends FieldValues>(props: {
         </button>
         {props.showForgotPassword && (
           <Link
-            href="/forgot-password"
-            className="absolute right-0 -bottom-5 mr-auto inline-block text-xs underline-offset-4 hover:underline"
+            href="/auth/forgot-password"
+            className="text-primary absolute right-0 -bottom-6 mr-auto inline-block text-xs font-medium underline-offset-2 hover:underline"
           >
             Forgot your password?
           </Link>

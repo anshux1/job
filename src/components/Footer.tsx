@@ -1,5 +1,5 @@
 import React from "react"
-import { footerLinks } from "@/utils/constants"
+import { footerLinks } from "@/constants/navLinks"
 import { BriefcaseBusiness, Github } from "lucide-react"
 
 export const Footer = () => {

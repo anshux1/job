@@ -1,230 +1,4 @@
-export const navLinks = {
-  home: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Find Jobs",
-      href: "/find-jobs",
-    },
-    {
-      label: "Find Employers",
-      href: "/find-employers",
-    },
-    {
-      label: "Find Candidates",
-      href: "/find-candidates",
-    },
-    {
-      label: "Customer Support",
-      href: "/support",
-    },
-  ],
-  candidate: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Find Jobs",
-      href: "/jobs",
-    },
-    {
-      label: "Find Employers",
-      href: "/employers",
-    },
-
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Job Alerts",
-      href: "/job-alerts",
-    },
-    {
-      label: "Customer Support",
-      href: "/support",
-    },
-  ],
-  employers: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Find Candidates",
-      href: "/find-candidates",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "My Jobs",
-      href: "/my-jobs",
-    },
-    {
-      label: "Applications",
-      href: "/applications",
-    },
-    {
-      label: "Customer Support",
-      href: "/support",
-    },
-  ],
-}
-
-export const footerLinks = {
-  quickLinks: [
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Contact",
-      href: "/contact",
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-  ],
-  candidates: [
-    {
-      label: "Browse Jobs",
-      href: "/find-jobs",
-    },
-    {
-      label: "Browse Employers",
-      href: "/employers",
-    },
-    {
-      label: "Candidate Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Saved Jobs",
-      href: "/saved-jobs",
-    },
-  ],
-  employers: [
-    {
-      label: "Post a Job",
-      href: "/post-job",
-    },
-    {
-      label: "Browse Candidates",
-      href: "/candidates",
-    },
-    {
-      label: "Employers Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Applications",
-      href: "/applications",
-    },
-  ],
-  support: [
-    {
-      label: "Faqs",
-      href: "/faqs",
-    },
-    {
-      label: "Privacy Policy",
-      href: "/privacy-policy",
-    },
-    {
-      label: "Terms & Conditions",
-      href: "/terms-and-conditions",
-    },
-  ],
-}
-
-export const cities = [
-  "Mumbai",
-  "Delhi",
-  "Bangalore",
-  "Hyderabad",
-  "Ahmedabad",
-  "Chennai",
-  "Kolkata",
-  "Surat",
-  "Pune",
-  "Jaipur",
-  "Lucknow",
-  "Kanpur",
-  "Nagpur",
-  "Indore",
-  "Thane",
-  "Bhopal",
-  "Visakhapatnam",
-  "Pimpri & Chinchwad",
-  "Patna",
-  "Vadodara",
-  "Ghaziabad",
-  "Ludhiana",
-  "Agra",
-  "Nashik",
-  "Faridabad",
-  "Meerut",
-  "Rajkot",
-  "Kalyan & Dombivali",
-  "Vasai Virar",
-  "Varanasi",
-  "Srinagar",
-  "Aurangabad",
-  "Dhanbad",
-  "Amritsar",
-  "Navi Mumbai",
-  "Allahabad",
-  "Ranchi",
-  "Haora",
-  "Coimbatore",
-  "Jabalpur",
-  "Gwalior",
-  "Vijayawada",
-  "Jodhpur",
-  "Madurai",
-  "Raipur",
-  "Kota",
-  "Guwahati",
-  "Chandigarh",
-  "Solapur",
-  "Hubli and Dharwad",
-  "Bareilly",
-  "Moradabad",
-  "Gurgaon",
-  "Aligarh",
-  "Jalandhar",
-  "Tiruchirappalli",
-  "Bhubaneswar",
-  "Salem",
-  "Mira and Bhayander",
-  "Thiruvananthapuram",
-  "Bhiwandi",
-  "Saharanpur",
-  "Gorakhpur",
-  "Guntur",
-  "Bikaner",
-  "Amravati",
-  "Noida",
-  "Jamshedpur",
-  "Bhilai Nagar",
-  "Warangal",
-  "Cuttack",
-  "Firozabad",
-  "Kochi",
-  "Bhavnagar",
-  "Dehradun",
-  "Durgapur",
-  "Asansol",
-  "Nanded Waghala",
-  "Kolapur",
-  "Ajmer",
-]
+import { BriefcaseBusiness, Building2, UsersRound } from "lucide-react"
 
 export const dummyJobs = [
   {
@@ -379,3 +153,62 @@ export const dummyEmployer = [
   { company: "NetGenius", openings: 4 },
   { company: "Innovate IT", openings: 7 },
 ]
+
+export const dummyData = {
+  analytics: [
+    {
+      number: "1.75,324",
+      title: "Live job",
+      Icon: BriefcaseBusiness,
+    },
+    {
+      number: "97,856",
+      title: "Companies",
+      Icon: Building2,
+    },
+    {
+      number: "38,47,154",
+      title: "Candidates",
+      Icon: UsersRound,
+    },
+    {
+      number: "1,568",
+      title: "New Jobs",
+      Icon: BriefcaseBusiness,
+    },
+  ],
+  popularVacancies: [
+    {
+      title: "Full-Stack Dev",
+      numbers: "45,904",
+    },
+    {
+      title: "Product Manager",
+      numbers: "4,339",
+    },
+    {
+      title: "Web Designer",
+      numbers: "20,065",
+    },
+    {
+      title: "Front-End Dev",
+      numbers: "74,821",
+    },
+    {
+      title: "Cloud Engineer",
+      numbers: "39,556",
+    },
+    {
+      title: "UI/UX Designer",
+      numbers: "55,382",
+    },
+    {
+      title: "Blockchain Dev",
+      numbers: "8,569",
+    },
+    {
+      title: "Data Scientist",
+      numbers: "7,586",
+    },
+  ],
+}
