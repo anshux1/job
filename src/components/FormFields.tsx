@@ -126,6 +126,7 @@ export function DateField<F extends FieldValues>(props: {
   label?: React.ReactNode
   required?: boolean
   disabled?: boolean
+  className?: string
 }) {
   return (
     <FormField
@@ -144,12 +145,13 @@ export function DateField<F extends FieldValues>(props: {
                   className={cn(
                     "pl-3 text-left font-normal",
                     !field.value && "text-muted-foreground",
+                    props.className,
                   )}
                   disabled={props.disabled}
                 >
                   <CalendarIcon className="mr-2 ml-0 size-4 opacity-50" />
                   {field.value ? (
-                    format(field.value, "PPP")
+                    format(field.value, "MMM dd yyyy")
                   ) : (
                     <span>Pick a date</span>
                   )}

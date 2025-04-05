@@ -17,7 +17,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form"
-import { InputField } from "@/components/FormFields"
+import { DateField, InputField } from "@/components/FormFields"
 import { createCompanyInfoSchema } from "@/actions/company/schema"
 import { InputTypeCompanyInfo } from "@/actions/company/types"
 
@@ -60,66 +60,96 @@ export const CompanyInfoForm = () => {
     [form],
   )
   return (
-    <div className="px-4 py-2">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <h3 className="text-lg font-medium">Logo & Banner Image</h3>
-          <div className="my-2 flex h-44 w-full gap-4 md:h-60">
-            <FileUploadBox
-              className="md:w-2/5"
-              label="Upload Logo"
-              onFileSelect={setLogo}
-              inputRef={logoInputRef}
-              preview={getPreview(logo)}
-            />
-            <FileUploadBox
-              className="md:w-3/5"
-              label="Upload Banner"
-              onFileSelect={setBannner}
-              inputRef={bannerInputRef}
-              preview={getPreview(banner)}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
+        <h3 className="mb-4 text-3xl font-semibold">Create Company</h3>
+        <div className="my-2 flex h-44 w-full gap-4 md:h-52">
+          <FileUploadBox
+            className="md:w-2/5"
+            label="Upload Logo"
+            onFileSelect={setLogo}
+            inputRef={logoInputRef}
+            preview={getPreview(logo)}
+          />
+          <FileUploadBox
+            className="md:w-3/5"
+            label="Upload Banner"
+            onFileSelect={setBannner}
+            inputRef={bannerInputRef}
+            preview={getPreview(banner)}
+          />
+        </div>
+        <InputField
+          label="Company Name"
+          control={form.control}
+          name="companyName"
+        />
+        <div className="my-3 flex w-full flex-col gap-2 md:flex-row">
+          <div className="flex-1">
+            <InputField
+              control={form.control}
+              name="companyEmail"
+              label="Company Email"
             />
           </div>
-          <InputField
-            label="Company Name"
-            control={form.control}
-            name="companyName"
-          />
-          <h3 className="mt-2 mb-1 text-sm font-medium">About Us</h3>
-          <FormField
-            control={form.control}
-            name="about"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <MinimalTiptapEditor
-                    {...field}
-                    throttleDelay={0}
-                    className={cn("minimal-tiptap w-full", {
-                      "border-destructive focus-within:border-destructive":
-                        form.formState.errors.about,
-                    })}
-                    editorContentClassName="some-class"
-                    output="html"
-                    placeholder="Write down about your company here. Let the candidates know who we are..."
-                    onCreate={handleCreate}
-                    immediatelyRender={true}
-                    editable={true}
-                    injectCSS={true}
-                    editorClassName="focus:outline-none p-5"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button className="mt-2 w-fit" size="lg">
-            <p>Save & Next</p>
-            <ArrowRightIcon />
-          </Button>
-        </form>
-      </Form>
-    </div>
+
+          <div className="flex items-center gap-2">
+            <div className="flex-1">
+              <InputField
+                control={form.control}
+                name="teamSize"
+                label="Team Size"
+                placeholder="e.g. 50-100"
+              />
+            </div>
+            <DateField
+              className="h-10 min-w-[180px]"
+              label="Year of Establishment"
+              control={form.control}
+              name="yearOfEstablish"
+            />
+          </div>
+        </div>
+        <InputField
+          control={form.control}
+          name="companyWebsite"
+          label="Company Website"
+          placeholder="https://example.com"
+        />
+        <h3 className="mt-2 mb-1 text-sm font-medium">About Us</h3>
+        <FormField
+          control={form.control}
+          name="about"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <MinimalTiptapEditor
+                  {...field}
+                  throttleDelay={0}
+                  className={cn("minimal-tiptap w-full", {
+                    "border-destructive focus-within:border-destructive":
+                      form.formState.errors.about,
+                  })}
+                  editorContentClassName="some-class"
+                  output="html"
+                  placeholder="Write down about your company here. Let the candidates know who we are..."
+                  onCreate={handleCreate}
+                  immediatelyRender={true}
+                  editable={true}
+                  injectCSS={true}
+                  editorClassName="focus:outline-none p-5"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button className="mt-2 w-fit" size="lg">
+          <p>Save & Next</p>
+          <ArrowRightIcon />
+        </Button>
+      </form>
+    </Form>
   )
 }
 

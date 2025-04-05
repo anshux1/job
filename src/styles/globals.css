@@ -139,6 +139,6 @@
   }
 
   .minimal-tiptap {
-    @apply flex h-auto min-h-72 w-full flex-col rounded-md border border-input shadow-sm focus-within:border-primary;
+    @apply flex h-auto min-h-60 md:min-h-72 w-full flex-col rounded-md border border-input shadow-sm focus-within:border-primary;
   }
 }
