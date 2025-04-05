@@ -3,12 +3,13 @@ import { createCompanyTabs } from "@/constants/company"
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CompanyInfoForm } from "./_components/CompanyInfoForm"
 
 export default function page() {
   return (
-    <div className="flex size-full items-center justify-center bg-red-50">
-      <Tabs defaultValue="tab-1">
-        <ScrollArea>
+    <div className="flex justify-center px-2">
+      <Tabs defaultValue="tab-1" className="px-2">
+        <ScrollArea className="mx-2 max-w-screen scroll-auto">
           <TabsList className="text-foreground mb-3 h-auto gap-2 rounded-none border-b bg-transparent px-0 py-0.5">
             {createCompanyTabs.map((tab, index) => (
               <TabsTrigger
@@ -24,9 +25,11 @@ export default function page() {
               </TabsTrigger>
             ))}
           </TabsList>
-          <ScrollBar orientation="horizontal" />
+          <ScrollBar orientation="horizontal" className="hidden" />
         </ScrollArea>
-        <TabsContent value="tab-1"></TabsContent>
+        <TabsContent value="tab-1" className="mx-2">
+          <CompanyInfoForm />
+        </TabsContent>
         <TabsContent value="tab-2">
           <p className="text-muted-foreground pt-1 text-center text-xs">
             Content for Tab 2

@@ -1,8 +1,11 @@
 @import "tailwindcss";
+@import "../components/minimal-tiptap/styles/index.css";
 
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
+
+
 
 @theme {
   --font-sans: var(--font-geist-sans);
@@ -133,5 +136,9 @@
 
   .container-wrapper {
     @apply max-w-[1400px] min-[1800px]:max-w-7xl min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed px-4;
+  }
+
+  .minimal-tiptap {
+    @apply flex h-auto min-h-72 w-full flex-col rounded-md border border-input shadow-sm focus-within:border-primary;
   }
 }
