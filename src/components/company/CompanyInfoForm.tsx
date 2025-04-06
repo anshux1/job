@@ -62,7 +62,13 @@ export const CompanyInfoForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-        <h3 className="mb-4 text-3xl font-semibold">Create Company</h3>
+        <h1 className="dark:text-secondary-foreground mb-1 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Create Your Company Profile
+        </h1>
+        <p className="text-muted-foreground mb-2 max-w-2xl text-xs">
+          Welcome to the first step in hiring top talent! Before you can post
+          jobs, let’s set up your company profile.
+        </p>
         <div className="my-2 flex h-44 w-full gap-4 md:h-52">
           <FileUploadBox
             className="md:w-2/5"
@@ -144,7 +150,7 @@ export const CompanyInfoForm = () => {
             </FormItem>
           )}
         />
-        <Button className="mt-2 w-fit" size="lg">
+        <Button className="mt-2 w-fit self-end" size="lg">
           <p>Save & Next</p>
           <ArrowRightIcon />
         </Button>

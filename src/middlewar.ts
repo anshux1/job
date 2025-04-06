@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!isPublicRoute && !isLoggedIn) {
-    return NextResponse.redirect(new URL("/signin", nextUrl))
+    return NextResponse.redirect(new URL("/auth/signin", nextUrl))
   }
   return NextResponse.next()
 }

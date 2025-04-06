@@ -11,18 +11,18 @@ export interface Auth0FormProps {
 }
 
 export const Auth0Form = ({ type }: Auth0FormProps) => {
-  const handleAuth = async (provider: "google" | "github" | "twitter") => {
+  const handleAuth = async (provider: "google" | "github") => {
     await authClient.signIn.social(
       {
         provider,
-        callbackURL: "/overview",
+        newUserCallbackURL: "/onboarding",
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           toast.success("Sign up successfully")
         },
         onError: (error) => {
-          console.log(error)
           toast.error(error.error.message)
         },
       },
@@ -53,16 +53,16 @@ export const Auth0Form = ({ type }: Auth0FormProps) => {
           type="submit"
           variant="outline"
           className="w-full"
-          onClick={() => handleAuth("twitter")}
+          onClick={() => handleAuth("github")}
         >
           <Image
-            src="/social/twitter.svg"
+            src="/social/github.svg"
             className="dark:invert"
             alt="Google logo"
             width={20}
             height={20}
           />
-          {type === "Signin" ? "Sign In " : "Continue "} with X
+          {type === "Signin" ? "Sign In " : "Sign Up"} with Github
         </Button>
       </div>
     </div>
