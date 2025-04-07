@@ -1,6 +1,11 @@
 import { z } from "zod"
 
-import { conpanyFoundingSchema, createCompanyInfoSchema } from "./schema"
+import { Company } from "@prisma/client"
+import { ActionState } from "@/lib/create-action"
+import { createCompanySchema } from "./schema"
 
-export type InputTypeCompanyInfo = z.infer<typeof createCompanyInfoSchema>
-export type InputTypeCompanyFounding = z.infer<typeof conpanyFoundingSchema>
+export type InputTypeCreateCompany = z.infer<typeof createCompanySchema>
+export type ReturnTypeCreateCompany = ActionState<
+  InputTypeCreateCompany,
+  Company
+>

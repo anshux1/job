@@ -1,14 +1,18 @@
 "use client"
 
-import React, { useCallback, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 import { Editor } from "@tiptap/react"
-import { CloudUpload } from "lucide-react"
+import { CloudUpload, Trash } from "lucide-react"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
+import { useAction } from "@/hooks/useAction"
+import { useFileUpload } from "@/hooks/useFileUpload"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -18,24 +22,28 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { DateField, InputField } from "@/components/FormFields"
-import { createCompanyInfoSchema } from "@/actions/company/schema"
-import { InputTypeCompanyInfo } from "@/actions/company/types"
+import { createCompany } from "@/actions/company"
+import { createCompanySchema } from "@/actions/company/schema"
+import { InputTypeCreateCompany } from "@/actions/company/types"
 
 const MinimalTiptapEditor = dynamic(
   () => import("@/components/minimal-tiptap/minimal-tiptap"),
-  {
-    ssr: false,
-  },
+  { ssr: false },
 )
+
+type ImgType = {
+  file: File | null
+  type: "logo" | "banner"
+}
 
 export const CompanyInfoForm = () => {
   const editorRef = useRef<Editor | null>(null)
   const logoInputRef = useRef<HTMLInputElement>(null)
   const bannerInputRef = useRef<HTMLInputElement>(null)
-  const [banner, setBannner] = useState<File | null>(null)
-  const [logo, setLogo] = useState<File | null>(null)
-  const form = useForm<InputTypeCompanyInfo>({
-    resolver: zodResolver(createCompanyInfoSchema),
+  const [img, setImg] = useState<ImgType>({ file: null, type: "logo" })
+
+  const form = useForm<InputTypeCreateCompany>({
+    resolver: zodResolver(createCompanySchema),
     defaultValues: {
       companyName: "",
       about: "",
@@ -43,12 +51,25 @@ export const CompanyInfoForm = () => {
       logo: "",
     },
   })
-  const onSubmit = (data: InputTypeCompanyInfo) => {
-    console.log("DAta: ", data)
-  }
 
-  const getPreview = (file: File | null) =>
-    file ? URL.createObjectURL(file) : undefined
+  const { uploadFile } = useFileUpload({
+    onSuccess: (data) => {
+      form.setValue(img.type, data.url)
+    },
+  })
+
+  const { execute, isLoading } = useAction(createCompany, {
+    onSuccess: () => {
+      toast.success("Company created successfully")
+    },
+    onError: () => {
+      toast.error("Failed to create company")
+    },
+  })
+
+  useEffect(() => {
+    if (img.file && img.type) uploadFile(img.file, img.type)
+  }, [img, uploadFile])
 
   const handleCreate = useCallback(
     ({ editor }: { editor: Editor }) => {
@@ -59,6 +80,10 @@ export const CompanyInfoForm = () => {
     },
     [form],
   )
+  const handleImageDelete = (type: ImgType["type"]) => form.setValue(type, "")
+  const onSubmit = (data: InputTypeCreateCompany) => {
+    execute(data)
+  }
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
@@ -69,20 +94,24 @@ export const CompanyInfoForm = () => {
           Welcome to the first step in hiring top talent! Before you can post
           jobs, let’s set up your company profile.
         </p>
-        <div className="my-2 flex h-44 w-full gap-4 md:h-52">
+        <div className="my-2 flex max-h-52 w-full gap-4">
           <FileUploadBox
             className="md:w-2/5"
             label="Upload Logo"
-            onFileSelect={setLogo}
+            type="logo"
+            onFileSelect={setImg}
             inputRef={logoInputRef}
-            preview={getPreview(logo)}
+            preview={form.getValues("logo")}
+            deleteImg={handleImageDelete}
           />
           <FileUploadBox
             className="md:w-3/5"
             label="Upload Banner"
-            onFileSelect={setBannner}
+            onFileSelect={setImg}
+            type="banner"
             inputRef={bannerInputRef}
-            preview={getPreview(banner)}
+            preview={form.getValues("banner")}
+            deleteImg={handleImageDelete}
           />
         </div>
         <InputField
@@ -98,7 +127,6 @@ export const CompanyInfoForm = () => {
               label="Company Email"
             />
           </div>
-
           <div className="flex items-center gap-2">
             <div className="flex-1">
               <InputField
@@ -150,7 +178,7 @@ export const CompanyInfoForm = () => {
             </FormItem>
           )}
         />
-        <Button className="mt-2 w-fit self-end" size="lg">
+        <Button disabled={isLoading} className="mt-2 w-fit self-end" size="lg">
           <p>Save & Next</p>
           <ArrowRightIcon />
         </Button>
@@ -161,10 +189,12 @@ export const CompanyInfoForm = () => {
 
 interface FileUploadBoxProps {
   label: string
-  onFileSelect: (file: File) => void
+  onFileSelect: React.Dispatch<React.SetStateAction<ImgType>>
   inputRef: React.RefObject<HTMLInputElement | null>
   preview?: string
   className?: string
+  type: ImgType["type"]
+  deleteImg: (type: ImgType["type"]) => void
 }
 
 const FileUploadBox = ({
@@ -173,21 +203,34 @@ const FileUploadBox = ({
   inputRef,
   preview,
   className,
+  type,
+  deleteImg,
 }: FileUploadBoxProps) => {
   return (
     <div className={cn("flex flex-col gap-1", className)}>
       <h3 className="text-sm">{label}</h3>
       {preview ? (
-        <img
-          src={preview}
-          alt={label}
-          className="border-grid h-52 w-full border object-contain object-center"
-        />
+        <div className="relative mb-10 max-h-52">
+          <Image
+            src={preview}
+            alt={label}
+            width={400}
+            height={10}
+            className="h-44 w-full object-contain object-center"
+          />
+          <div className="absolute right-0 bottom-0 z-20 cursor-pointer text-red-800">
+            <Trash
+              onClick={() => {
+                deleteImg(type)
+              }}
+            />
+          </div>
+        </div>
       ) : (
         <div
           onClick={() => inputRef.current?.click()}
           className={cn(
-            "border-grid flex h-52 cursor-pointer flex-col items-center justify-center gap-3 rounded-md border",
+            "border-grid flex h-44 cursor-pointer flex-col items-center justify-center gap-3 rounded-md border",
           )}
         >
           <input
@@ -196,7 +239,15 @@ const FileUploadBox = ({
             hidden
             onChange={(e) => {
               if (e.target.files && e.target.files[0]) {
-                onFileSelect(e.target.files[0])
+                const file = e.target.files[0]
+                if (file.size > 5 * 1024 * 1024) {
+                  toast.error("File size exceeds 5 MB")
+                  return
+                }
+                onFileSelect({
+                  file: e.target.files[0],
+                  type,
+                })
               }
             }}
           />

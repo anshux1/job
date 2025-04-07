@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "upload.wikimedia.org",
       },
+      {
+        hostname: "files.edgestore.dev",
+      },
     ],
   },
 }

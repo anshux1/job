@@ -23,6 +23,8 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  Company       Company?
+  type          String?
 
   @@unique([email])
   @@map("user")
@@ -71,4 +73,20 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model Company {
+  id              String   @id @default(uuid())
+  logo            String?
+  banner          String?
+  name            String
+  about           String?
+  teamSize        String?
+  yearOfEstablish DateTime
+  website         String?
+  email           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userId          String   @unique
+  User            User     @relation(fields: [userId], references: [id])
 }
